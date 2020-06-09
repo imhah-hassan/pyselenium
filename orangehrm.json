@@ -1,0 +1,28 @@
+{
+   "url":"http://192.168.1.211/orangehrm",
+   "user":"admin",
+   "pwd":"Hassan$2020",
+   "language":"fr",
+   "messages":{
+      "welcomeAdmin":"Bienvenue Hassan",
+      "elementNotVisible":"Element not visible",
+      "personalDetails" : "Informations personnelles",
+      "NoRecordsFound" : "Aucun Résultat",
+      "elementFound" : "Element trouvé",
+      "elementVisible" : "elementVisible",
+      "elementNotVisible" : "elementNotVisible",
+      "elementClickable" : "Element cliquable",
+      "elementNotClickable" : "Element non cliquable"
+   },
+   "employees":[
+      {
+         "lastname":"IMHAH",
+         "firstname":"Hassan",
+         "id":"1300",
+         "gender":"1",
+         "nation":"64",
+         "marital":"Single",
+         "DOB":"2001-11-21"
+      }
+   ]
+}
