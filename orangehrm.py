@@ -45,7 +45,7 @@ class OrangeHrm (se_utils):
             self.click("btnSave")
 
     def add_employee(self, lastname, firstname, id, gender, nation, marital, DOB):
-        logging.info("add employee  : %s %S", lastname, firstname)
+        logging.info("add employee  : %s %s", lastname, firstname)
         self.click("//a[@id='menu_pim_viewPimModule']")
         time.sleep(0.5)
         self.wait_for_employee_list_load()
