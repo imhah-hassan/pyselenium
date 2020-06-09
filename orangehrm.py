@@ -11,9 +11,10 @@ class OrangeHrm (se_utils):
         self.load_application('orangehrm.json')
         driver = self.get_driver()
         logging.info("Test started")
-        logging.info("%s-%s-%s", "Driver loaded", driver.name, driver.session_id)
+        logging.debug("%s-%s-%s", "Driver loaded", driver.name, driver.session_id)
 
     def login(self):
+        logging.info("login to : %s with use %s ",  self.application["url"], self.application["user"])
         self.driver.get(self.application["url"])
         self.take_screen_shot("home")
         self.type('//input[@id="txtUsername"]', self.application['user'])
@@ -23,11 +24,13 @@ class OrangeHrm (se_utils):
         self.take_screen_shot("welcome")
 
     def logout(self):
+        logging.info("logout and quit")
         self.click("//a[@id='welcome']")
         self.click("//a[contains(@href, 'auth/logout')]")
         self.driver.quit()
 
     def change_localization(self):
+        logging.info("change_localization to : %s", self.application['language'])
         self.click("//a[@id='menu_admin_viewAdminModule']")
         self.click("//a[@id='menu_admin_Configuration']")
         self.click("//a[@id='menu_admin_localization']")
@@ -42,6 +45,7 @@ class OrangeHrm (se_utils):
             self.click("btnSave")
 
     def add_employee(self, lastname, firstname, id, gender, nation, marital, DOB):
+        logging.info("add employee  : %s %S", lastname, firstname)
         self.click("//a[@id='menu_pim_viewPimModule']")
         time.sleep(0.5)
         self.wait_for_employee_list_load()
@@ -81,6 +85,7 @@ class OrangeHrm (se_utils):
         self.click("//input[@id='btnSave']")
 
     def search_employee(self, id):
+        logging.info("search employee by id : %s", id)
         self.click("//a[@id='menu_pim_viewPimModule']")
         self.click("//a[@id='menu_pim_viewEmployeeList']")
         time.sleep(0.3)
@@ -89,10 +94,11 @@ class OrangeHrm (se_utils):
         self.click("//input[@id='searchBtn']")
         self.wait_for_employee_list_load()
         rowsFound = len(self.driver.find_elements_by_xpath("//table[@id='resultTable']/tbody/tr"))
-        logging.warning ("rows : %s" , rowsFound)
+        logging.info("rows found : %s", rowsFound)
         self.verify_numbers(rowsFound, 1)
 
     def employee_address(self, id):
+        logging.info("update employee address : %s", id)
         self.search_employee(id)
         # details
         self.click("//table[@id='resultTable']/tbody/tr/td[2]/a")
@@ -109,6 +115,7 @@ class OrangeHrm (se_utils):
         self.click("//input[@id='btnSave']")
 
     def delete_all_employees(self):
+        logging.info("delete all employees")
         self.click("//a[@id='menu_pim_viewPimModule']")
         time.sleep(0.3)
         self.click("//a[@id='menu_pim_viewEmployeeList']")
@@ -125,6 +132,7 @@ class OrangeHrm (se_utils):
             raise ValueError('Employees not deleted')
 
     def delete_employee(self, id):
+        logging.info("delete employee by id : %s", id)
         self.search_employee(id)
         self.click("//table[@id='resultTable']/tbody/tr/td/input")
         self.click("//input[@id='btnDelete']")
@@ -132,6 +140,7 @@ class OrangeHrm (se_utils):
         self.assertEqual(self.application["messages"]["NoRecordsFound"], self.get_text("//table[@id='resultTable']/tbody/tr/td"))
 
     def wait_for_employee_list_load (self):
+        logging.info("wait for employee list load")
         count = config.ExplicitWait*10
         element = self.get_element("//input[@id='empsearch_employee_name_empName']")
         cssname = element.get_attribute("class")
@@ -141,7 +150,7 @@ class OrangeHrm (se_utils):
             cssname = element.get_attribute("class")
             i=i+1
         if (i<count):
-            logging.info("wait_for_employee_list_load : OK", )
+            logging.debug("wait_for_employee_list_load : OK", )
             return (True)
         else:
             logging.error("wait_for_employee_list_load : KO")

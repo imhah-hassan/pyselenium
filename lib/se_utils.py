@@ -13,6 +13,7 @@ import time
 import json
 import config
 import warnings
+from pathlib import Path
 
 
 class se_utils (unittest.TestCase):
@@ -22,6 +23,7 @@ class se_utils (unittest.TestCase):
         warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWarning)
         self.driver = None
         self.application = None
+        Path("./logs").mkdir(parents=True, exist_ok=True)
         logfile = "logs/orangehrm.log"
         logger = logging.getLogger(logfile)
         handler = RotatingFileHandler(logfile, maxBytes=2000000, backupCount=10)
@@ -54,14 +56,14 @@ class se_utils (unittest.TestCase):
     def wait_for_element(self, by, locator):
         try:
             WebDriverWait(self.driver, config.ExplicitWait).until(EC.presence_of_element_located((by, locator)))
-            logging.info("%s-%s-%s", self.application['messages']['elementFound'], by, locator)
+            logging.debug("%s-%s-%s", self.application['messages']['elementFound'], by, locator)
         except TimeoutException:
             logging.error("%s-%s-%s", self.application['messages']['elementNotFound'], by, locator)
             return (False)
 
         try:
             WebDriverWait(self.driver, config.ExplicitWait).until(EC.visibility_of_element_located((by, locator)))
-            logging.info("%s-%s-%s", self.application['messages']['elementVisible'], by, locator)
+            logging.debug("%s-%s-%s", self.application['messages']['elementVisible'], by, locator)
             return (True)
         except TimeoutException:
             logging.error("%s-%s-%s", self.application['messages']['elementNotVisible'], by, locator)
@@ -70,7 +72,7 @@ class se_utils (unittest.TestCase):
     def wait_for_element_clickable(self, by, locator):
         try:
             WebDriverWait(self.driver, config.ExplicitWait).until(EC.element_to_be_clickable((by, locator)))
-            logging.info("%s-%s-%s", self.application['messages']['elementClickable'], by, locator)
+            logging.debug("%s-%s-%s", self.application['messages']['elementClickable'], by, locator)
             return (True)
         except TimeoutException:
             logging.error("%s-%s-%s", self.application['messages']['elementNotClickable'], by, locator)
@@ -94,36 +96,36 @@ class se_utils (unittest.TestCase):
         element = self.get_element(xpath)
         if self.wait_for_element_clickable(By.XPATH, xpath):
             element.click()
-            logging.info("%s-%s-%s", "Click on", xpath, self.driver.current_url)
+            logging.debug("%s-%s-%s", "Click on", xpath, self.driver.current_url)
 
     def type(self, xpath, value):
         element = self.get_element(xpath)
         element.click()
         element.clear()
         element.send_keys(value)
-        logging.info("%s-%s-%s", "type", xpath, value)
+        logging.debug("%s-%s-%s", "type", xpath, value)
 
     def select(self, xpath, value):
         element = self.get_element(xpath)
         Select(element).select_by_value(value)
-        logging.info("%s-%s-%s", "select", xpath, value)
+        logging.debug("%s-%s-%s", "select", xpath, value)
 
 
     def get_text(self, xpath):
         text = self.get_element(xpath).text
-        logging.info("%s-%s-%s", "get test", xpath, text)
+        logging.debug("%s-%s-%s", "get test", xpath, text)
         return (text)
 
 
     def get_value(self, xpath):
         value = self.get_element(xpath).get_attribute("value")
-        logging.info("%s-%s-%s", "get value", xpath, value)
+        logging.debug("%s-%s-%s", "get value", xpath, value)
         return (value)
 
 
     def get_count(self, xpath):
         elements = self.get_elements(xpath)
-        logging.info("%s-%s-%s", "get count elements", xpath, len(elements))
+        logging.debug("%s-%s-%s", "get count elements", xpath, len(elements))
         return (len(elements))
 
 
@@ -133,7 +135,7 @@ class se_utils (unittest.TestCase):
 
 
     def take_screen_shot(self, name):
-        logging.info("%s-%s-%s", "screen shot", name, 'screenshots\\' + name + '.png')
+        logging.debug("%s-%s-%s", "screen shot", name, 'screenshots\\' + name + '.png')
         self.driver.get_screenshot_as_file('screenshots/' + name + '.png')
 
     def verify_text(self, xpath, expected):
