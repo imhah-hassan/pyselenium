@@ -4,7 +4,7 @@ from orangehrm import OrangeHrm as orangehrm
 
 @given(u'Go to logon page')
 def step_impl(context):
-    context.orangehrm = orangehrm('../orangehrm.json', None)
+    context.orangehrm = orangehrm('../../orangehrm.json', None)
     print ("Go to logon page")
 
 
