@@ -1,5 +1,5 @@
 {
-   "url":"http://localhost/orangehrm",
+   "url":"http://192.168.1.150/orangehrm",
    "user":"admin",
    "pwd":"T€st$2020",
    "language":"fr",
@@ -9,6 +9,7 @@
       "personalDetails" : "Informations personnelles",
       "NoRecordsFound" : "Aucun Résultat",
       "elementFound" : "Element trouvé",
+      "elementNotFound" : "Element non trouvé",
       "elementVisible" : "elementVisible",
       "elementNotVisible" : "elementNotVisible",
       "elementClickable" : "Element cliquable",

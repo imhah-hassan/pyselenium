@@ -31,9 +31,6 @@ class se_utils (unittest.TestCase):
         fmt = '%(asctime)s.%(msecs)03d;%(levelname)s;%(module)s;%(message)s'
         logging.basicConfig(format=fmt, datefmt='%Y.%m.%d %H.%M.%S', filename=logfile, level=config.LogLevel)
 
-    def quit(self):
-        self.driver.quit()
-
     def load_application (self, jsonfile):
         print ("Current dir : " + os.getcwd())
         with open(jsonfile, encoding='utf-8') as f:

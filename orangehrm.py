@@ -14,23 +14,28 @@ class OrangeHrm (se_utils):
         logging.info("Test started")
         logging.debug("%s-%s-%s", "Driver loaded", driver.name, driver.session_id)
 
-    def login(self):
+    def login(self, login, pwd):
         logging.info("login to : %s with use %s ",  self.application["url"], self.application["user"])
         self.driver.get(self.application["url"])
         self.take_screen_shot("home")
-        self.type('//input[@id="txtUsername"]', self.application['user'])
-        self.type('//input[@id="txtPassword"]', self.application['pwd'])
+        self.type('//input[@id="txtUsername"]', login)
+        self.type('//input[@id="txtPassword"]', pwd)
         self.click('//input[@id="btnLogin"]')
 
-    def check_admin_access (self):
-        self.verify_text("//a[@id='welcome']", self.application['messages']["welcomeAdmin"])
+    def check_welcome_test (self, welcomeText):
+        self.verify_text("//a[@id='welcome']", welcomeText)
         self.take_screen_shot("welcome")
 
-    def quit(self):
-        self.driver.quit()
+    def check_admin_access(self):
+        self.verify_text("//a[@id='menu_admin_viewAdminModule']/b", "Admin")
+        self.click("//a[@id='menu_admin_viewAdminModule']/b")
+        self.verify_text("//a[@id='menu_admin_UserManagement']", "Gestion des utilisateurs")
+
+    def check_login_error(self):
+        self.verify_text("//span[@id='spanMessage']", "Invalid credentials")
 
     def logout(self):
-        logging.info("logout and quit")
+        logging.info("logout")
         self.click("//a[@id='welcome']")
         self.click("//a[contains(@href, 'auth/logout')]")
 

@@ -5,3 +5,9 @@ Feature: OrangeHRM authentication
     Given Go to logon page
     When Type Admin and password
     Then Check the welcome text and the admin menu
+    And Logout
+
+  Scenario: Conexion to OrangeHRM with error
+    Given Go to logon page
+    When Type Admin and blabla as password
+    Then Error message displayed
