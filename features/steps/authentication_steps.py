@@ -12,7 +12,6 @@ def step_impl(context):
 def step_impl(context):
     context.orangehrm.logout()
     context.orangehrm.driver.quit()
-    context.orangehrm.driver.shutdown()
 
 
 @when(u'Type Admin and password')
@@ -38,4 +37,3 @@ def step_impl(context):
         pass
     finally:
         context.orangehrm.driver.quit()
-        context.orangehrm.driver.shutdown()
