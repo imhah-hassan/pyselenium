@@ -14,7 +14,7 @@ import json
 import config
 import warnings
 from pathlib import Path
-
+import os
 
 class se_utils (unittest.TestCase):
 
@@ -35,6 +35,7 @@ class se_utils (unittest.TestCase):
         self.driver.quit()
 
     def load_application (self, jsonfile):
+        print ("Current dir : " + os.getcwd())
         with open(jsonfile, encoding='utf-8') as f:
             self.application = json.load(f)
 
@@ -46,9 +47,12 @@ class se_utils (unittest.TestCase):
         chrome_options.add_argument("test-type")
         if (config.Headless):
             chrome_options.add_argument("--headless")
-        driver = webdriver.Remote(
-            command_executor=config.Remote,
-            desired_capabilities=chrome_options.to_capabilities())
+        if (config.Remote==''):
+            driver = webdriver.Chrome("../drivers/chromedriver.exe", chrome_options=chrome_options)
+        else:
+            driver = webdriver.Remote(
+                command_executor=config.Remote,
+                desired_capabilities=chrome_options.to_capabilities())
         driver.implicitly_wait(config.ImplicitWait)
         self.driver = driver
         return (driver)

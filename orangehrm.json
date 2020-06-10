@@ -1,7 +1,7 @@
 {
-   "url":"http://192.168.1.211/orangehrm",
+   "url":"http://localhost/orangehrm",
    "user":"admin",
-   "pwd":"Hassan$2020",
+   "pwd":"T€st$2020",
    "language":"fr",
    "messages":{
       "welcomeAdmin":"Bienvenue Hassan",

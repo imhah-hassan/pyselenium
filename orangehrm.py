@@ -4,11 +4,12 @@ from lib.se_utils import se_utils
 import logging
 import time
 import config
+import os
 
 class OrangeHrm (se_utils):
-    def __init__(self, driver:None):
+    def __init__(self, jsonfile, driver:None):
         super().__init__()
-        self.load_application('orangehrm.json')
+        self.load_application(jsonfile)
         driver = self.get_driver()
         logging.info("Test started")
         logging.debug("%s-%s-%s", "Driver loaded", driver.name, driver.session_id)
@@ -20,14 +21,18 @@ class OrangeHrm (se_utils):
         self.type('//input[@id="txtUsername"]', self.application['user'])
         self.type('//input[@id="txtPassword"]', self.application['pwd'])
         self.click('//input[@id="btnLogin"]')
+
+    def check_admin_access (self):
         self.verify_text("//a[@id='welcome']", self.application['messages']["welcomeAdmin"])
         self.take_screen_shot("welcome")
+
+    def quit(self):
+        self.driver.quit()
 
     def logout(self):
         logging.info("logout and quit")
         self.click("//a[@id='welcome']")
         self.click("//a[contains(@href, 'auth/logout')]")
-        self.driver.quit()
 
     def change_localization(self):
         logging.info("change_localization to : %s", self.application['language'])

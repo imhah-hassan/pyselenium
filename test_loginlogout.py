@@ -1,6 +1,6 @@
 import unittest
 
-from orangehrm import OrangeHrm as orange
+from orangehrm import OrangeHrm as orangehrm
 from ddt import ddt, file_data
 import random
 class test_loginlogout(unittest.TestCase):
@@ -8,7 +8,7 @@ class test_loginlogout(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.idEmployee=random.randint(1000, 9999)
-        cls.orangehrm = orange(None)
+        cls.orangehrm = orangehrm(None)
 
     def test_a_login(self):
         self.orangehrm.login()
