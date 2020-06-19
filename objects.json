@@ -1,0 +1,14 @@
+{
+   "application":"OrangeHRM",
+   "pages":[
+      {
+         "name":"Login",
+         "relative_path":"",
+         "objects": [
+            {"name":"UserName", "type": "Edit","xpath":"//input[@id='txtUsername']", "css": ""},
+            {"name":"Password", "type": "Edit","xpath":"//input[@id='txtPassword']", "css":""},
+            {"name":"btnLogin", "type": "Button","xpath":"//input[@id='btnLogin']", "css":""}
+         ]
+      }
+   ]
+}
