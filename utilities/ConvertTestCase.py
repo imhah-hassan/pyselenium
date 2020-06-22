@@ -13,12 +13,14 @@ def convert_katalon():
             if ('.click()' in line):
                 line = line.replace('.click()', '')
                 line = line.replace ('driver.find_element_by_xpath(', 'self.click(')
+                line = line.replace ('driver.find_element_by_id("', 'self.click("#')
                 print (line)
                 continue
             if ('.clear()' in line):
                 continue
             if ('.send_keys(' in line):
                 line = line.replace ('driver.find_element_by_xpath(', 'self.type(')
+                line = line.replace ('driver.find_element_by_id("', 'self.type("#')
                 line = line.replace (').send_keys(', ', ')
                 print (line)
                 continue
@@ -27,6 +29,9 @@ def convert_katalon():
                 line = line.replace('.text', '')
                 print (line)
                 continue
+            if ('Select(driver.' in line):
+                line = line.replace('Select(driver.find_element_by_id("', 'self.select("#')
+                line = line.replace(')).select_by_visible_text("', ', "label=')
             if ('driver.get' in line):
                 line = line.replace('driver.get', 'self.get')
                 line = line.replace(base_url, '')
@@ -45,14 +50,4 @@ def extract_xpath (line):
     end = line.find('"', start)
     return(line[start:end])
 
-
-newcode = open(code_css,'w', encoding='utf-8')
-with open(code, encoding='utf-8') as f:
-    for line in f:
-        if ('("//' in line) and ('[@id=\'' in line) :
-            id = extract_id (line)
-            xpath = extract_xpath(line)
-            line = line.replace(xpath, '#'+id) + '    #' + xpath
-            newcode.write(line)
-
-newcode.close()
+convert_katalon()

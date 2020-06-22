@@ -119,13 +119,13 @@
 </tr>
 <tr><td>click</td><td>id=menu_admin_viewJobTitleList<datalist><option>id=menu_admin_viewJobTitleList</option><option>link=Titres de poste</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Utilisateurs'])[1]/following::a[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Admin'])[1]/following::a[4]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Niveaux de paie'])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Situation d', "'", 'emploi')])[1]/preceding::a[2]</option><option>//a[contains(text(),'Titres de poste')]</option><option>//a[@id='menu_admin_viewJobTitleList']</option><option>//div[@id='wrapper']/div[2]/ul/li/ul/li[2]/ul/li/a</option><option>//a[contains(@href, '/orangehrm/symfony/web/index.php/admin/viewJobTitleList')]</option><option>//li/ul/li[2]/ul/li/a</option><option>css=#menu_admin_viewJobTitleList</option></datalist></td><td></td>
 </tr>
-<tr><td>click</td><td>id=ohrmList_chkSelectAll<datalist><option>id=ohrmList_chkSelectAll</option><option>name=chkSelectAll</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titres de poste'])[2]/following::input[4]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='travail Etat'])[1]/following::input[4]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titre du poste'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Description du poste'])[1]/preceding::input[1]</option><option>//input[@id='ohrmList_chkSelectAll']</option><option>//table[@id='resultTable']/thead/tr/th/input</option><option>//th/input</option><option>css=#ohrmList_chkSelectAll</option></datalist></td><td></td>
+<tr><td>click</td><td>css=#ohrmList_chkSelectAll<datalist><option>id=ohrmList_chkSelectAll</option><option>name=chkSelectAll</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titres de poste'])[2]/following::input[4]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='travail Etat'])[1]/following::input[4]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titre du poste'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Description du poste'])[1]/preceding::input[1]</option><option>//input[@id='ohrmList_chkSelectAll']</option><option>//table[@id='resultTable']/thead/tr/th/input</option><option>//th/input</option><option>css=#ohrmList_chkSelectAll</option></datalist></td><td></td>
 </tr>
 <tr><td>click</td><td>id=btnDelete<datalist><option>id=btnDelete</option><option>name=btnDelete</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titres de poste'])[2]/following::input[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='travail Etat'])[1]/following::input[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titre du poste'])[1]/preceding::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Description du poste'])[1]/preceding::input[2]</option><option>//input[@id='btnDelete']</option><option>//form[@id='frmList_ohrmListComponent']/div/input[2]</option><option>//form/div/input[2]</option><option>css=#btnDelete</option></datalist></td><td></td>
 </tr>
 <tr><td>click</td><td>id=dialogDeleteBtn<datalist><option>id=dialogDeleteBtn</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='OrangeHRM - Confirmation requise'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='×'])[2]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='OrangeHRM, Inc'])[1]/preceding::input[2]</option><option>//input[@id='dialogDeleteBtn']</option><option>//div[@id='deleteConfModal']/div[3]/input</option><option>//div[3]/input</option><option>css=#dialogDeleteBtn</option></datalist></td><td></td>
 </tr>
-<tr><td>verifyText</td><td>//table[@id='resultTable']/tbody/tr/td<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Description du poste'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titre du poste'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='×'])[2]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='OrangeHRM - Confirmation requise'])[1]/preceding::td[1]</option><option>//table[@id='resultTable']/tbody/tr/td</option><option>//td</option><option>css=td</option></datalist></td><td>Aucun résultat</td>
+<tr><td>verifyText</td><td>css=td<datalist><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Description du poste'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titre du poste'])[1]/following::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='×'])[2]/preceding::td[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='OrangeHRM - Confirmation requise'])[1]/preceding::td[1]</option><option>//table[@id='resultTable']/tbody/tr/td</option><option>//td</option><option>css=td</option></datalist></td><td>Aucun résultat</td>
 </tr>
 <tr><td>click</td><td>id=menu_admin_viewPayGrades<datalist><option>id=menu_admin_viewPayGrades</option><option>link=Niveaux de paie</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Titres de poste'])[1]/following::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Utilisateurs'])[1]/following::a[3]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Situation d', "'", 'emploi')])[1]/preceding::a[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)=concat('Catégories d', "'", 'emploi')])[1]/preceding::a[2]</option><option>//a[contains(text(),'Niveaux de paie')]</option><option>//a[@id='menu_admin_viewPayGrades']</option><option>//div[@id='wrapper']/div[2]/ul/li/ul/li[2]/ul/li[2]/a</option><option>//a[contains(@href, '/orangehrm/symfony/web/index.php/admin/viewPayGrades')]</option><option>//li/ul/li[2]/ul/li[2]/a</option><option>css=#menu_admin_viewPayGrades</option></datalist></td><td></td>
 </tr>
@@ -165,19 +165,31 @@
 </tr>
 <tr><td>click</td><td>id=menu_admin_viewCompanyStructure<datalist><option>id=menu_admin_viewCompanyStructure</option><option>link=Structure</option><option>//a[contains(text(),'Structure')]</option><option>//a[@id='menu_admin_viewCompanyStructure']</option><option>//div[@id='wrapper']/div[2]/ul/li/ul/li[3]/ul/li[3]/a</option><option>//a[contains(@href, '/orangehrm/symfony/web/index.php/admin/viewCompanyStructure')]</option><option>//li/ul/li[3]/ul/li[3]/a</option><option>css=#menu_admin_viewCompanyStructure</option></datalist></td><td></td>
 </tr>
-<tr><td>click</td><td>id=btnEdit<datalist><option>id=btnEdit</option><option>name=btnEdit</option><option>//input[@id='btnEdit']</option><option>//div[@id='content']/div/div[2]/p/input</option><option>//p/input</option><option>css=#btnEdit</option></datalist></td><td></td>
+<tr><td>click</td><td>css=#btnEdit<datalist><option>id=btnEdit</option><option>name=btnEdit</option><option>//input[@id='btnEdit']</option><option>//div[@id='content']/div/div[2]/p/input</option><option>//p/input</option><option>css=#btnEdit</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>class=addButton<datalist><option>id=treeLink_delete_5</option><option>link=x</option><option>xpath=(//a[contains(text(),'x')])[2]</option><option>//a[@id='treeLink_delete_5']</option><option>//li[@id='node_5']/a[3]</option><option>xpath=(//a[contains(@href, '#?')])[5]</option><option>//a[3]</option><option>css=#treeLink_delete_5</option><option>class=addButton</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=dialogYes<datalist><option>id=dialogYes</option><option>//input[@id='dialogYes']</option><option>//div[@id='dltDialog']/div[3]/input</option><option>//div[3]/div[3]/input</option><option>css=#dialogYes</option></datalist></td><td></td>
 </tr>
 <tr><td>click</td><td>id=treeLink_addChild_1<datalist><option>id=treeLink_addChild_1</option><option>link=+</option><option>//a[contains(text(),'+')]</option><option>//a[@id='treeLink_addChild_1']</option><option>//li[@id='node_1']/a[2]</option><option>xpath=(//a[contains(@href, '#?')])[2]</option><option>//li/a[2]</option><option>css=#treeLink_addChild_1</option></datalist></td><td></td>
 </tr>
-<tr><td>type</td><td>id=txtUnit_Id<datalist><option>id=txtUnit_Id</option><option>name=txtUnit_Id</option><option>//input[@id='txtUnit_Id']</option><option>//form[@id='ohrmFormComponent_Form']/fieldset/ol/li/input[2]</option><option>//li/input[2]</option><option>css=#txtUnit_Id</option></datalist></td><td>CNS</td>
+<tr><td>type</td><td>id=txtUnit_Id<datalist><option>id=txtUnit_Id</option><option>name=txtUnit_Id</option><option>//input[@id='txtUnit_Id']</option><option>//form[@id='ohrmFormComponent_Form']/fieldset/ol/li/input[2]</option><option>//li/input[2]</option><option>css=#txtUnit_Id</option></datalist></td><td>CNS1</td>
 </tr>
-<tr><td>type</td><td>id=txtName<datalist><option>id=txtName</option><option>name=txtName</option><option>//input[@id='txtName']</option><option>//form[@id='ohrmFormComponent_Form']/fieldset/ol/li[2]/input</option><option>//li[2]/input</option><option>css=#txtName</option></datalist></td><td>Conseil</td>
+<tr><td>type</td><td>id=txtName<datalist><option>id=txtName</option><option>name=txtName</option><option>//input[@id='txtName']</option><option>//form[@id='ohrmFormComponent_Form']/fieldset/ol/li[2]/input</option><option>//li[2]/input</option><option>css=#txtName</option></datalist></td><td>Conseil1</td>
 </tr>
-<tr><td>type</td><td>id=txtDescription<datalist><option>id=txtDescription</option><option>name=txtDescription</option><option>//textarea[@id='txtDescription']</option><option>//form[@id='ohrmFormComponent_Form']/fieldset/ol/li[3]/textarea</option><option>//textarea</option><option>css=#txtDescription</option></datalist></td><td>Conseil</td>
+<tr><td>type</td><td>id=txtDescription<datalist><option>id=txtDescription</option><option>name=txtDescription</option><option>//textarea[@id='txtDescription']</option><option>//form[@id='ohrmFormComponent_Form']/fieldset/ol/li[3]/textarea</option><option>//textarea</option><option>css=#txtDescription</option></datalist></td><td>Conseil1</td>
 </tr>
 <tr><td>click</td><td>id=btnSave<datalist><option>id=btnSave</option><option>//input[@id='btnSave']</option><option>//div[@id='unitDialog']/div[3]/input</option><option>//div[3]/div[2]/div[3]/input</option><option>css=#btnSave</option></datalist></td><td></td>
 </tr>
-<tr><td>click</td><td>link=x<datalist><option>id=treeLink_delete_2</option><option>link=x</option><option>xpath=(//a[contains(text(),'x')])[2]</option><option>//a[@id='treeLink_delete_2']</option><option>//li[@id='node_2']/a[3]</option><option>xpath=(//a[contains(@href, '#?')])[5]</option><option>//a[3]</option><option>css=#treeLink_delete_2</option></datalist></td><td></td>
+<tr><td>click</td><td>//div[@id='content']/div/div[2]/p<datalist><option>//div[@id='content']/div/div[2]/p</option><option>//div[3]/div/div[2]/p</option><option>css=div.inner &gt; p</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=btnEdit<datalist><option>id=btnEdit</option><option>name=btnEdit</option><option>//input[@id='btnEdit']</option><option>//div[@id='content']/div/div[2]/p/input</option><option>//p/input</option><option>css=#btnEdit</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>class=deleteButton<datalist><option>id=treeLink_delete_6</option><option>link=x</option><option>xpath=(//a[contains(text(),'x')])[2]</option><option>//a[@id='treeLink_delete_6']</option><option>//li[@id='node_6']/a[3]</option><option>xpath=(//a[contains(@href, '#?')])[5]</option><option>//a[3]</option><option>css=#treeLink_delete_6</option><option>class=deleteButton</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>id=dialogYes<datalist><option>id=dialogYes</option><option>//input[@id='dialogYes']</option><option>//div[@id='dltDialog']/div[3]/input</option><option>//div[3]/div[3]/input</option><option>css=#dialogYes</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>css=#treeLink_delete_2<datalist><option>id=treeLink_delete_2</option><option>link=x</option><option>xpath=(//a[contains(text(),'x')])[2]</option><option>//a[@id='treeLink_delete_2']</option><option>//li[@id='node_2']/a[3]</option><option>xpath=(//a[contains(@href, '#?')])[5]</option><option>//a[3]</option><option>css=#treeLink_delete_2</option></datalist></td><td></td>
 </tr>
 <tr><td>click</td><td>id=dialogYes<datalist><option>id=dialogYes</option><option>//input[@id='dialogYes']</option><option>//div[@id='dltDialog']/div[3]/input</option><option>//div[3]/div[3]/input</option><option>css=#dialogYes</option></datalist></td><td></td>
 </tr>
@@ -199,7 +211,7 @@
 </tr>
 <tr><td>type</td><td>id=location_name<datalist><option>id=location_name</option><option>name=location[name]</option><option>//input[@id='location_name']</option><option>//form[@id='frmLocation']/fieldset/ol/li/input</option><option>//li/input</option><option>css=#location_name</option></datalist></td><td>Paris</td>
 </tr>
-<tr><td>select</td><td>id=location_country<datalist><option>id=location_country</option><option>name=location[country]</option><option>//select[@id='location_country']</option><option>//form[@id='frmLocation']/fieldset/ol/li[2]/select</option><option>//select</option><option>css=#location_country</option></datalist></td><td>label=France</td>
+<tr><td>select</td><td>id=location_country<datalist><option>id=location_country</option><option>name=location[country]</option><option>//select[@id='location_country']</option><option>//form[@id='frmLocation']/fieldset/ol/li[2]/select</option><option>//select</option><option>css=#location_country</option></datalist></td><td>value=FR</td>
 </tr>
 <tr><td>type</td><td>id=location_province<datalist><option>id=location_province</option><option>name=location[province]</option><option>//input[@id='location_province']</option><option>//li[@id='location_province_li']/input</option><option>//li[4]/input</option><option>css=#location_province</option></datalist></td><td>Paris</td>
 </tr>
@@ -343,17 +355,17 @@
 <tr>
 				<td>type</td>
 				<td>id=firstName<datalist><option>id=firstName</option><option>name=firstName</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Middle Name'])[1]/preceding::input[1]</option><option>//input[@id='firstName']</option><option>//form[@id='frmAddEmp']/fieldset/ol/li/ol/li/input</option><option>//li/ol/li/input</option><option>css=#firstName</option></datalist></td>
-				<td>IMHAH</td>
+				<td>René</td>
 </tr>
 <tr>
 				<td>type</td>
 				<td>id=middleName<datalist><option>id=middleName</option><option>name=middleName</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Middle Name'])[1]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[1]/following::input[2]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[2]/preceding::input[1]</option><option>//input[@id='middleName']</option><option>//form[@id='frmAddEmp']/fieldset/ol/li/ol/li[2]/input</option><option>//li/ol/li[2]/input</option><option>css=#middleName</option></datalist></td>
-				<td>HI</td>
+				<td>RD</td>
 </tr>
 <tr>
 				<td>type</td>
 				<td>id=lastName<datalist><option>id=lastName</option><option>name=lastName</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[2]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Employee Id'])[1]/preceding::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='Photograph'])[1]/preceding::input[2]</option><option>//input[@id='lastName']</option><option>//form[@id='frmAddEmp']/fieldset/ol/li/ol/li[3]/input</option><option>//li/ol/li[3]/input</option><option>css=#lastName</option></datalist></td>
-				<td>Hassan</td>
+				<td>Descartes</td>
 </tr>
 <tr>
 				<td>type</td>
@@ -371,17 +383,17 @@
 <tr>
 				<td>type</td>
 				<td>//input[@id='user_name']<datalist><option>id=user_name</option><option>name=user_name</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[3]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[4]/preceding::input[1]</option><option>//input[@id='user_name']</option><option>//form[@id='frmAddEmp']/fieldset/ol/li[5]/input</option><option>//li[5]/input</option><option>css=#user_name</option></datalist></td>
-				<td>himhah</td>
+				<td>rdescartes</td>
 </tr>
 <tr>
 				<td>type</td>
 				<td>//input[@id='user_password']<datalist><option>id=user_password</option><option>name=user_password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[4]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[5]/preceding::input[1]</option><option>//input[@id='user_password']</option><option>//form[@id='frmAddEmp']/fieldset/ol/li[6]/input</option><option>//li[6]/input</option><option>css=#user_password</option></datalist></td>
-				<td>Azrtj998$LOMPOAMP</td>
+				<td>LeDiscoursDeLaMethodes%1632</td>
 </tr>
 <tr>
 				<td>type</td>
 				<td>//input[@id='re_password']<datalist><option>id=re_password</option><option>name=re_password</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[5]/following::input[1]</option><option>xpath=(.//*[normalize-space(text()) and normalize-space(.)='*'])[6]/preceding::input[1]</option><option>//input[@id='re_password']</option><option>//form[@id='frmAddEmp']/fieldset/ol/li[7]/input</option><option>//li[7]/input</option><option>css=#re_password</option></datalist></td>
-				<td>Azrtj998$LOMPOAMP</td>
+				<td>LeDiscoursDeLaMethodes%1632</td>
 </tr>
 <tr>
 				<td>click</td>
@@ -398,15 +410,17 @@
 </tr>
 <tr><td>click</td><td>id=btnSave<datalist><option>id=btnSave</option><option>//input[@id='btnSave']</option><option>//form[@id='frmEmpJobDetails']/fieldset/p/input</option><option>//p/input</option><option>css=#btnSave</option></datalist></td><td></td>
 </tr>
-<tr><td>select</td><td>id=job_job_title<datalist><option>id=job_job_title</option><option>name=job[job_title]</option><option>//select[@id='job_job_title']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li/select</option><option>//select</option><option>css=#job_job_title</option></datalist></td><td>label=FGDFGDFG</td>
+<tr><td>select</td><td>id=job_job_title<datalist><option>id=job_job_title</option><option>name=job[job_title]</option><option>//select[@id='job_job_title']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li/select</option><option>//select</option><option>css=#job_job_title</option></datalist></td><td>label=Associate</td>
 </tr>
-<tr><td>select</td><td>id=job_emp_status<datalist><option>id=job_emp_status</option><option>name=job[emp_status]</option><option>//select[@id='job_emp_status']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[3]/select</option><option>//li[3]/select</option><option>css=#job_emp_status</option></datalist></td><td>label=CDD</td>
+<tr><td>select</td><td>id=job_emp_status<datalist><option>id=job_emp_status</option><option>name=job[emp_status]</option><option>//select[@id='job_emp_status']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[3]/select</option><option>//li[3]/select</option><option>css=#job_emp_status</option></datalist></td><td>label=CDI</td>
 </tr>
-<tr><td>select</td><td>id=job_eeo_category<datalist><option>id=job_eeo_category</option><option>name=job[eeo_category]</option><option>//select[@id='job_eeo_category']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[4]/select</option><option>//li[4]/select</option><option>css=#job_eeo_category</option></datalist></td><td>label=Leader</td>
+<tr><td>select</td><td>id=job_eeo_category<datalist><option>id=job_eeo_category</option><option>name=job[eeo_category]</option><option>//select[@id='job_eeo_category']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[4]/select</option><option>//li[4]/select</option><option>css=#job_eeo_category</option></datalist></td><td>label=Consultant</td>
 </tr>
-<tr><td>select</td><td>id=job_sub_unit<datalist><option>id=job_sub_unit</option><option>name=job[sub_unit]</option><option>//select[@id='job_sub_unit']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[6]/select</option><option>//li[6]/select</option><option>css=#job_sub_unit</option></datalist></td><td>label=Test.IT</td>
+<tr><td>select</td><td>id=job_sub_unit<datalist><option>id=job_sub_unit</option><option>name=job[sub_unit]</option><option>//select[@id='job_sub_unit']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[6]/select</option><option>//li[6]/select</option><option>css=#job_sub_unit</option></datalist></td><td>label=Test.It</td>
 </tr>
-<tr><td>select</td><td>id=job_location<datalist><option>id=job_location</option><option>name=job[location]</option><option>//select[@id='job_location']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[7]/select</option><option>//li[7]/select</option><option>css=#job_location</option></datalist></td><td>label=Nantes</td>
+<tr><td>select</td><td>id=job_location<datalist><option>id=job_location</option><option>name=job[location]</option><option>//select[@id='job_location']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[7]/select</option><option>//li[7]/select</option><option>css=#job_location</option></datalist></td><td>label=Paris</td>
+</tr>
+<tr><td>type</td><td>id=job_contract_start_date<datalist><option>id=job_contract_start_date</option><option>name=job[contract_start_date]</option><option>//input[@id='job_contract_start_date']</option><option>//form[@id='frmEmpJobDetails']/fieldset/ol/li[9]/input</option><option>//li[9]/input</option><option>css=#job_contract_start_date</option></datalist></td><td>2020-07-01</td>
 </tr>
 <tr><td>click</td><td>id=btnSave<datalist><option>id=btnSave</option><option>//input[@id='btnSave']</option><option>//form[@id='frmEmpJobDetails']/fieldset/p/input</option><option>//p/input</option><option>css=#btnSave</option></datalist></td><td></td>
 </tr>

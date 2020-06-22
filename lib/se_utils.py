@@ -144,6 +144,11 @@ class se_utils (unittest.TestCase):
         Select(element).select_by_value(value)
         logging.debug("%s-%s-%s", "select", locator, value)
 
+    def select_text(self, locator, text):
+        element = self.get_element(locator)
+        Select(element).select_by_visible_text(text)
+        logging.debug("%s-%s-%s", "select", locator, text)
+
     def get_text(self, locator):
         text = self.get_element(locator).text
         logging.debug("%s-%s-%s", "get test", locator, text)
