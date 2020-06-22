@@ -7,23 +7,29 @@ import config
 import os
 
 class OrangeHrm (se_utils):
-    def __init__(self, jsonfile, driver:None):
+    def __init__(self):
         super().__init__()
-        self.load_application(jsonfile)
-        driver = self.get_driver()
+        self.load_application('orangehrm.json')
+        self.driver = self.get_driver()
         logging.info("Test started")
-        logging.debug("%s-%s-%s", "Driver loaded", driver.name, driver.session_id)
+        logging.debug("%s-%s-%s", "Driver loaded", self.driver.name, self.driver.session_id)
 
-    def login(self):
-        logging.info("login to : %s with use %s ",  self.application["url"], self.application["user"])
+    def home(self):
         self.driver.get(self.application["url"])
+
+    def navigate(self, relative_path):
+        self.driver.get(self.application["url"]+'/symfony/web/index.php/'+relative_path)
+
+    def login(self, username, password):
+        logging.info("login to : %s with use %s ",  self.application["url"], self.application["user"])
         self.take_screen_shot("home")
-        self.type('//input[@id="txtUsername"]', self.application['user'])
-        self.type('//input[@id="txtPassword"]', self.application['pwd'])
-        self.click('//input[@id="btnLogin"]')
+        self.type('#txtUsername', username)
+        self.type('#txtPassword', password)
+        self.click('#btnLogin')
+        time.sleep(2)
 
     def check_admin_access (self):
-        self.verify_text("//a[@id='welcome']", self.application['messages']["welcomeAdmin"])
+        self.verify_text("#welcome", self.application['messages']["welcomeAdmin"])
         self.take_screen_shot("welcome")
 
     def quit(self):
@@ -31,7 +37,7 @@ class OrangeHrm (se_utils):
 
     def logout(self):
         logging.info("logout and quit")
-        self.click("//a[@id='welcome']")
+        self.click("#welcome")
         self.click("//a[contains(@href, 'auth/logout')]")
 
     def change_localization(self):
@@ -51,11 +57,9 @@ class OrangeHrm (se_utils):
 
     def add_employee(self, lastname, firstname, id, gender, nation, marital, DOB):
         logging.info("add employee  : %s %s", lastname, firstname)
-        self.click("//a[@id='menu_pim_viewPimModule']")
-        time.sleep(0.5)
         self.wait_for_employee_list_load()
-        self.click("//a[@id='menu_pim_addEmployee']")
-        # En fonction de la vitesse d'exécution.
+        self.click("#menu_pim_addEmployee")
+        # En fonction de la vitesse d'exÃ©cution.
         # Le 1er click ne permet pas d'afficher la page d'ajouter de l'employee
         if (not self.wait_for_element(By.XPATH, "//input[@id='firstName']")):
             self.click("//a[@id='menu_pim_addEmployee']")
@@ -73,7 +77,7 @@ class OrangeHrm (se_utils):
         # edit details
         self.click("//input[@id='btnSave']")
 
-        # Le 1er click ne permet pas d'afficher la page de modification du détail de l'employee
+        # Le 1er click ne permet pas d'afficher la page de modification du dï¿½tail de l'employee
         if (not self.wait_for_element(By.XPATH, "//input[@id='personal_optGender_"+str(gender)+"']")):
             self.click("//a[@id='btnSave']")
         self.take_screen_shot("Edit")
@@ -146,6 +150,7 @@ class OrangeHrm (se_utils):
 
     def wait_for_employee_list_load (self):
         logging.info("wait for employee list load")
+        self.navigate('/pim/viewEmployeeList')
         count = config.ExplicitWait*10
         element = self.get_element("//input[@id='empsearch_employee_name_empName']")
         cssname = element.get_attribute("class")
@@ -160,3 +165,7 @@ class OrangeHrm (se_utils):
         else:
             logging.error("wait_for_employee_list_load : KO")
             return(False)
+
+    # TODO : add code
+    def update_organization_general_information(self):
+        pass

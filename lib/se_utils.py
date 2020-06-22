@@ -39,10 +39,13 @@ class se_utils (unittest.TestCase):
 
     def load_application (self, jsonfile):
         try:
-            with open(jsonfile, encoding='utf-8') as f:
+            with open(config.path + '\\' + jsonfile, encoding='utf-8') as f:
                 self.application = json.load(f)
         except:
             logging.error("file not found %s", jsonfile)
+
+    def navigate (self, relative_url):
+        self.driver.get (self.application['url'] + relative_url)
 
     def get_driver (self):
         chrome_options = Options()
@@ -89,69 +92,83 @@ class se_utils (unittest.TestCase):
         except TimeoutException:
             logging.error("%s-%s-%s", self.application['messages']['elementNotClickable'], by, locator)
 
-    def get_element(self, css):
+    def get_element(self, locator):
         time.sleep(config.Latency)
         try:
-            self.wait_for_element(By.CSS_SELECTOR, css)
-            element = self.driver.find_element_by_css_selector(css)
+            if (locator.startswith('id=')):
+                locator = locator.replace('id=', '')
+                self.wait_for_element(By.ID, locator)
+                element = self.driver.find_element_by_id(locator)
+            else:
+                if (locator.startswith('//')):
+                    self.wait_for_element(By.XPATH, locator)
+                    element = self.driver.find_element_by_xpath(locator)
+                else:
+                    self.wait_for_element(By.CSS_SELECTOR, locator)
+                    element = self.driver.find_element_by_css_selector(locator)
             return (element)
         except TimeoutException:
-            logging.error(self.application['messages']['elementNotFound'], css)
+            logging.error(self.application['messages']['elementNotFound'], locator)
 
-    def get_elements(self, css):
+    def get_elements(self, locator):
         time.sleep(config.Latency)
-        self.wait_for_element(By.css, css)
-        elements = self.driver.find_elements_by_css(css)
+        self.wait_for_element(By.XPATH, locator)
+        elements = self.driver.find_elements_by_xpath(locator)
         return (elements)
 
-    def click(self, css):
-        element = self.get_element(css)
-        if self.wait_for_element_clickable(By.CSS_SELECTOR, css):
+    def click(self, locator):
+        element = self.get_element(locator)
+        isClickable=False
+        if (locator.startswith('id=')):
+            locator = locator.replace('id=', '')
+            isClickable = self.wait_for_element_clickable(By.ID, locator)
+        else:
+            if(locator.startswith('//')):
+                isClickable = self.wait_for_element_clickable(By.XPATH, locator)
+            else:
+                isClickable = self.wait_for_element_clickable(By.CSS_SELECTOR, locator)
+        # is clickable
+        if isClickable:
             element.click()
-            logging.debug("%s-%s-%s", "Click on", css, self.driver.current_url)
+            logging.debug("%s-%s-%s", "Click on", locator, self.driver.current_url)
 
-    def type(self, css, value):
-        element = self.get_element(css)
+    def type(self, locator, value):
+        element = self.get_element(locator)
         element.click()
         element.clear()
         element.send_keys(value)
-        logging.debug("%s-%s-%s", "type", css, value)
+        logging.debug("%s-%s-%s", "type", locator, value)
 
-    def select(self, css, value):
-        element = self.get_element(css)
+    def select(self, locator, value):
+        element = self.get_element(locator)
         Select(element).select_by_value(value)
-        logging.debug("%s-%s-%s", "select", css, value)
+        logging.debug("%s-%s-%s", "select", locator, value)
 
-
-    def get_text(self, css):
-        text = self.get_element(css).text
-        logging.debug("%s-%s-%s", "get test", css, text)
+    def get_text(self, locator):
+        text = self.get_element(locator).text
+        logging.debug("%s-%s-%s", "get test", locator, text)
         return (text)
 
-
-    def get_value(self, css):
-        value = self.get_element(css).get_attribute("value")
-        logging.debug("%s-%s-%s", "get value", css, value)
+    def get_value(self, locator):
+        value = self.get_element(locator).get_attribute("value")
+        logging.debug("%s-%s-%s", "get value", locator, value)
         return (value)
 
-
-    def get_count(self, css):
-        elements = self.get_elements(css)
-        logging.debug("%s-%s-%s", "get count elements", css, len(elements))
+    def get_count(self, locator):
+        elements = self.get_elements(locator)
+        logging.debug("%s-%s-%s", "get count elements", locator, len(elements))
         return (len(elements))
 
-
-    def is_selected(self, css):
-        checked = self.driver.find_element_by_css(css).is_selected()
+    def is_selected(self, locator):
+        checked = self.driver.find_element_by_xpath(locator).is_selected()
         return checked
-
 
     def take_screen_shot(self, name):
         logging.debug("%s-%s-%s", "screen shot", name, 'screenshots\\' + name + '.png')
         self.driver.get_screenshot_as_file('screenshots/' + name + '.png')
 
-    def verify_text(self, css, expected):
-        self.assertEqual(expected, self.get_text (css))
+    def verify_text(self, locator, expected):
+        self.assertEqual(expected, self.get_text (locator))
 
     def verify_numbers(self, expected, value):
         self.assertEqual(expected, value)

@@ -4,6 +4,9 @@ pip3 install selenium
 
 pip3 install behave
 
+pip3 install Faker
+
+
 
 pip3 install allure-behave
 behave -f allure_behave.formatter:AllureFormatter -o ./results ./features

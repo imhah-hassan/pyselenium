@@ -8,7 +8,7 @@ class test_loginlogout(unittest.TestCase):
     # this method is run before all tests
     @classmethod
     def setUpClass(cls):
-        cls.orangehrm = orangehrm(None)
+        cls.orangehrm = orangehrm()
         cls.orangehrm.home()
         cls.orangehrm.login('admin', cls.orangehrm.application['pwd'])
 

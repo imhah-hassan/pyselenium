@@ -6,7 +6,7 @@ class dom (se_utils):
     def __init__(self):
         super().__init__()
         self.elements = {'' : [{'name':'xpath'}]}
-        f =  open('objects.json', 'r')
+        f =  open('../objects.json', 'r')
         self.elements.clear()
         dom = json.load(f)
         for page in dom['pages']:
