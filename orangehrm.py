@@ -33,6 +33,10 @@ class OrangeHrm (se_utils):
         self.verify_text("#welcome", self.application['messages']["welcomeAdmin"])
         self.take_screen_shot("welcome")
 
+    def check_login_error (self):
+        self.verify_text("#spanMessage", self.application['messages']["logonError"])
+        self.take_screen_shot("LogonError")
+
     def quit(self):
         self.driver.quit()
 

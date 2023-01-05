@@ -5,6 +5,7 @@
    "language":"fr",
    "messages":{
       "welcomeAdmin":"Bienvenue Hassan",
+      "logonError":"Identifiants Non Valides",
       "elementNotVisible":"Element not visible",
       "personalDetails" : "Informations personnelles",
       "NoRecordsFound" : "Aucun Résultat",
