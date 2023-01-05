@@ -1,7 +1,7 @@
 {
-   "url":"http://localhost/orangehrm/",
-   "user":"admin",
-   "pwd":"T€st$2020",
+   "url":"http://localhost/orangehrm/symfony/web",
+   "user":"Admin",
+   "pwd":"Test.IT$2021",
    "language":"fr",
    "messages":{
       "welcomeAdmin":"Bienvenue Hassan",

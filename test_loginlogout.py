@@ -16,19 +16,22 @@ class test_loginlogout(unittest.TestCase):
     def test_a_login(self):
         self.orangehrm.login('admin', self.orangehrm.application['pwd'])
 
-    # @unittest.skip("debug")
+    #.skip("debug")@unittest
     def test_b_add_employee(self):
-        self.orangehrm.add_employee(self.faker.last_name(), self.faker.first_name(), str(self.idEmployee), 1, 64, 'Single', '1976-04-27')
+        name = self.faker.last_name()
+        firstname = self.faker.first_name()
+        login = firstname.lower()[0:1] + '.' + name
+        self.orangehrm.add_employee(name, firstname, str(self.idEmployee), 1, 64, 'Single', '1976-04-27', login, 'abc@wLPx$aa9' )
 
-    @unittest.skip("debug")
+    # @unittest.skip("debug")
     def test_c_search_employee(self):
         self.orangehrm.search_employee(self.idEmployee)
 
-    @unittest.skip("debug")
+    # @unittest.skip("debug")
     def test_d_employee_address(self):
         self.orangehrm.employee_address(self.idEmployee)
 
-    @unittest.skip("debug")
+    # @unittest.skip("debug")
     def test_e_delete_employee(self):
         self.orangehrm.delete_employee(str(self.idEmployee))
 

@@ -55,10 +55,10 @@ class se_utils (unittest.TestCase):
         chrome_options.add_argument("test-type")
         if (config.Headless):
             chrome_options.add_argument("--headless")
-        logging.info("Driver path : %s/drivers/chromedriver.exe", config.path)
+        logging.info("Loading Chrome Driver")
         try:
             if (config.Remote==''):
-                driver = webdriver.Chrome(config.path + "/drivers/chromedriver.exe", options=chrome_options)
+                driver = webdriver.Chrome(options=chrome_options)
             else:
                 driver = webdriver.Remote(
                     command_executor=config.Remote,
@@ -98,14 +98,14 @@ class se_utils (unittest.TestCase):
             if (locator.startswith('id=')):
                 locator = locator.replace('id=', '')
                 self.wait_for_element(By.ID, locator)
-                element = self.driver.find_element_by_id(locator)
+                element = self.driver.find_element(By.ID, value=locator)
             else:
                 if (locator.startswith('//')):
                     self.wait_for_element(By.XPATH, locator)
-                    element = self.driver.find_element_by_xpath(locator)
+                    element = self.driver.find_element(By.XPATH, value=locator)
                 else:
                     self.wait_for_element(By.CSS_SELECTOR, locator)
-                    element = self.driver.find_element_by_css_selector(locator)
+                    element = self.driver.find_element(by=By.CSS_SELECTOR, value=locator)
             return (element)
         except TimeoutException:
             logging.error(self.application['messages']['elementNotFound'], locator)

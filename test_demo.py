@@ -15,9 +15,6 @@ class test_loginlogout(unittest.TestCase):
     # @unittest.skip("debug")#
     def test_a_demo(self):
         self.orangehrm.update_organization_general_information()
-        # self.orangehrm.add_employee_login('IMHAH1784')
-        # element = self.orangehrm.get_element("//input[@id='btnSave']")
-        pass
 
     @classmethod
     def tearDownClass(cls):

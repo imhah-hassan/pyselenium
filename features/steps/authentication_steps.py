@@ -1,4 +1,4 @@
-import behave
+from behave import *
 import config
 import features.environment
 

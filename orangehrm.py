@@ -19,14 +19,14 @@ class OrangeHrm (se_utils):
         self.driver.get(self.application["url"])
 
     def navigate(self, relative_path):
-        self.driver.get(self.application["url"]+'/symfony/web/index.php/'+relative_path)
+        self.driver.get(self.application["url"]+relative_path)
 
     def login(self, username, password):
         logging.info("login to : %s with use %s ",  self.application["url"], self.application["user"])
         self.take_screen_shot("home")
-        self.type('#txtUsername', username)
-        self.type('#txtPassword', password)
-        self.click('#btnLogin')
+        self.type("#txtUsername", username)
+        self.type("#txtPassword", password)
+        self.click("#btnLogin")
         time.sleep(2)
 
     def check_admin_access (self):
@@ -165,11 +165,6 @@ class OrangeHrm (se_utils):
         logging.info("add employee  : %s %s", lastname, firstname)
         self.wait_for_employee_list_load()
         self.click("#menu_pim_addEmployee")
-        # En fonction de la vitesse d'exécution.
-        # Le 1er click ne permet pas d'afficher la page d'ajouter de l'employee
-        if (not self.wait_for_element(By.CSS_SELECTOR, "#firstName")):
-            self.click("#menu_pim_addEmployee")
-
         self.type("#firstName", firstname)
         self.type("#lastName", lastname)
         if (id!=''):
@@ -200,7 +195,7 @@ class OrangeHrm (se_utils):
         self.click("#btnSave")
 
         # Le 1er click ne permet pas d'afficher la page de modification du d�tail de l'employee
-        if (not self.wait_for_element(By.XPATH, "#personal_optGender_"+str(gender)+"")):
+        if (not self.wait_for_element(By.CSS_SELECTOR, "#personal_optGender_"+str(gender)+"")):
             self.click("#btnSave")
         self.take_screen_shot("Edit")
 
@@ -224,7 +219,7 @@ class OrangeHrm (se_utils):
         self.type("#empsearch_id", id)
         self.click("#searchBtn")
         self.wait_for_employee_list_load()
-        rowsFound = len(self.driver.find_elements_by_xpath("//table[@id='resultTable']/tbody/tr"))
+        rowsFound = len(self.driver.find_elements(By.XPATH, "//table[@id='resultTable']/tbody/tr"))
         logging.info("rows found : %s", rowsFound)
         self.verify_numbers(rowsFound, 1)
 
@@ -289,17 +284,10 @@ class OrangeHrm (se_utils):
         logging.info("wait for employee list load")
         self.navigate('/pim/viewEmployeeList')
         count = config.ExplicitWait*10
-        element = self.get_element("#empsearch_employee_name_empName")
-        cssname = element.get_attribute("class")
-        i=1
-        while ("ac_loading" in cssname) and (i<count):
-            time.sleep(0.1)
-            cssname = element.get_attribute("class")
-            i=i+1
-        if (i<count):
-            logging.debug("wait_for_employee_list_load : OK", )
+        try:
+            element = self.get_element("button[type='button'] i.bi-plus")
             return (True)
-        else:
+        except:
             logging.error("wait_for_employee_list_load : KO")
             return(False)
 
